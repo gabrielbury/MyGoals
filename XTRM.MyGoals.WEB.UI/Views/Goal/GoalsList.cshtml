@@ -1,0 +1,52 @@
+﻿@model IEnumerable<XTRM.MyGoals.WEB.UI.Models.Goal>
+
+@{
+    ViewBag.Title = "GoalsList";
+}
+
+<h2>GoalsList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Include")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.includeDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dueTo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.includeDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dueTo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+            @Html.ActionLink("Add History", "AddHistory", "GoalHistory", new { goalId = item.id}, null)
+        </td>
+    </tr>
+}
+
+</table>

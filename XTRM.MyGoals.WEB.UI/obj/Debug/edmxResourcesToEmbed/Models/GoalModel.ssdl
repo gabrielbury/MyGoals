@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyGoalsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Goal">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="5000" Nullable="false" />
+    <Property Name="includeDate" Type="datetime" Nullable="false" />
+    <Property Name="dueTo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GoalHistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="idGoal" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="1500" Nullable="false" />
+    <Property Name="includeDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_GoalHistory_Goal">
+    <End Role="Goal" Type="Self.Goal" Multiplicity="1" />
+    <End Role="GoalHistory" Type="Self.GoalHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goal">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GoalHistory">
+        <PropertyRef Name="idGoal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyGoalsModelStoreContainer">
+    <EntitySet Name="Goal" EntityType="Self.Goal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoalHistory" EntityType="Self.GoalHistory" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_GoalHistory_Goal" Association="Self.FK_GoalHistory_Goal">
+      <End Role="Goal" EntitySet="Goal" />
+      <End Role="GoalHistory" EntitySet="GoalHistory" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

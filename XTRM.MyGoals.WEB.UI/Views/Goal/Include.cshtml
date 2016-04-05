@@ -1,0 +1,87 @@
+﻿@model XTRM.MyGoals.WEB.UI.Models.Goal
+@{
+    ViewBag.Title = "Include";
+}
+
+<div class="form-wrapper col-lg-12">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div class="title">
+            <h2 class="text-center">New Goal</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.TextBoxFor(item => item.title, new { @class = "form-control", placeholder = "Goal title", id = "txtTitle" })
+            </div>
+            <div class="col-lg-6">
+                @Html.TextBoxFor(item => item.dueTo, new { @class = "form-control", placeholder = "Due to", id = "txtDueTo", @type = "date" })                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @Html.TextAreaFor(item => item.description, new { @class = "form-control", placeholder = "Descrition", id = "txtDescription" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-right btn-salvar">
+                <div class="btn btn-success">
+                    Salvar
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+
+<script>
+    $(function () {
+        $('.btn-salvar').on('click', function () {
+            if (validarDados()) {
+                var goal = {
+                    title: $('#txtTitle').val(),
+                    dueTo: $('#txtDueTo').val(),
+                    description: $('#txtDescription').val()
+                };
+
+                $.ajax({
+                    url: '/goal/include',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(goal),
+                    success: function (result) {
+                        console.log(result);
+                        if (result.Code === 200) {
+                            location.href = '/';
+                        } else {
+                            bootbox.alert(result.Message);
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+    function validarDados() {
+        var msgErro = '';
+        if ($('#txtTitle').val().trim() == '') {
+            msgErro += 'Fill the "Goal Title" field; <br />';
+        }
+        
+        if ($('#txtDueTo').val().trim() == '') {
+            msgErro += 'Fill the "Due To" field; <br />';
+        }
+
+        if ($('#txtDescription').val().trim() == '') {
+            msgErro += 'Fill the "Description" field; <br />';
+        }
+
+        if (msgErro !== '') {
+            bootbox.alert(msgErro);
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+

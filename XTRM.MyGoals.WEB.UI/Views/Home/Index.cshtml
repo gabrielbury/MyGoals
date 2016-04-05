@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "My 2016 Personal Goals";
+}
+
+
+<div class="fill-screen main-background">
+    <img src="~/Content/Images/cover.png" />
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+            <a class="home-btn" href="#">
+                <div class="btn btn-success">
+                    <span class="glyphicon glyphicon-record"></span> View My Goals
+                </div>
+            </a>
+            <a class="home-btn" href="@Url.Action("Include","Goal")">
+                <div class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus-sign"></span> Add a new Goal
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
