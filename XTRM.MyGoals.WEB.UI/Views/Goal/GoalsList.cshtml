@@ -43,10 +43,21 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
             @Html.ActionLink("Details", "Details", new { id = item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+            @Ajax.ActionLink("Delete", "DeleteGoal", new { goalId = item.id }, new AjaxOptions { HttpMethod = "DELETE" }, new { @class = "botaoDeletar"}) |
             @Html.ActionLink("Add History", "AddHistory", "GoalHistory", new { goalId = item.id}, null)
         </td>
     </tr>
 }
-
 </table>
+
+<script>
+    $('.botaoDeletar').on('click', function () {
+        var bt = $(this);
+        if (confirm('Desejas mesmo excluir o objetivo?')) {
+            bt.parent().parent().hide();
+            return true;
+        } else {
+            return false;
+        }
+    });
+</script>
