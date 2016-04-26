@@ -74,5 +74,16 @@ namespace XTRM.MyGoals.WEB.UI.Controllers
                 return View(goalsList);
             }
         }
+
+        [HttpDelete]
+        public ActionResult DeleteGoal(Guid goalId)
+        {
+            using (var contexto = new Models.MyGoalsEntities())
+            {
+                contexto.Goal.Remove(contexto.Goal.FirstOrDefault(g => g.id == goalId));
+                contexto.SaveChanges();
+            }
+            return RedirectToAction("GoalsList");
+        }
     }
 }
