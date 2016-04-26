@@ -73,7 +73,6 @@ namespace XTRM.MyGoals.WEB.UI.Controllers
                 var goalsList = context.Goal.OrderBy(g => g.includeDate).ToList();
                 return View(goalsList);
             }
-
         }
     }
 }

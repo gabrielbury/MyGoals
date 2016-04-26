@@ -1,0 +1,22 @@
+﻿@model List <XTRM.MyGoals.WEB.UI.Models.GoalHistory>
+@{
+    ViewBag.Title = "GoalHistoryList";
+}
+
+<h2>Goals History</h2>
+<div class="row">
+    @foreach (var hist in Model)
+    {
+        <div class="col-lg-4">
+            <div class="jumbotron">
+                <div class="text-success">
+                    <h3>@hist.Goal.title</h3>
+                </div>
+                <div class="text-info">
+                    <p>@hist.description</p>
+                </div>
+                @Html.ActionLink("Edit", "EditHistory", new { @goalHistoryId = hist.id})
+            </div>
+        </div>
+    }
+</div>

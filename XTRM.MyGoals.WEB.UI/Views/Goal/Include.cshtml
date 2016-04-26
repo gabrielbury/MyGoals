@@ -52,7 +52,7 @@
                     success: function (result) {
                         console.log(result);
                         if (result.Code === 200) {
-                            location.href = '/';
+                            location.href = '/Goal/GoalsList';
                         } else {
                             bootbox.alert(result.Message);
                         }

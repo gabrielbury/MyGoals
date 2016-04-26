@@ -44,7 +44,8 @@
             @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
             @Html.ActionLink("Details", "Details", new { id = item.id }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
-            @Html.ActionLink("Add History", "AddHistory", "GoalHistory", new { goalId = item.id}, null)
+            @Html.ActionLink("Add History", "AddHistory", "GoalHistory", new { goalId = item.id}, null) |
+            @Html.ActionLink("View History", "GoalHistoryList", "GoalHistory", new { goalId = item.id }, null)
         </td>
     </tr>
 }

@@ -9,6 +9,24 @@ namespace XTRM.MyGoals.WEB.UI.Controllers
 {
     public class GoalHistoryController : Controller
     {
+        /// <summary>
+        /// List the history of specific Goal
+        /// </summary>
+        /// <param name="goalId"></param>
+        /// <returns></returns>
+        public ActionResult GoalHistoryList(Guid goalId)
+        {
+            var model = new List<Models.GoalHistory>();
+            using (var contexto = new Models.MyGoalsEntities())
+            {
+                model = contexto.GoalHistory
+                    .Include("Goal")
+                    .Where(gh => gh.idGoal == goalId)
+                    .ToList();
+            }
+            return View(model);
+        }
+
         // GET: GoalHistory
         public ActionResult AddHistory(Guid goalId)
         {
@@ -36,6 +54,12 @@ namespace XTRM.MyGoals.WEB.UI.Controllers
                 );
                 contexto.SaveChanges();
             }
+            return RedirectToAction("GoalHistoryList", new { @goalId = _goal.Goal.id });
+        }
+
+        public ActionResult EditHistory(Guid goalHistoryId)
+        {
+
             return View();
         }
     }
