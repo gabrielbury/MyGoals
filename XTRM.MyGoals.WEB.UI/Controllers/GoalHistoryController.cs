@@ -74,11 +74,5 @@ namespace XTRM.MyGoals.WEB.UI.Controllers
             }
             return View();
         }
-
-        public ActionResult EditHistory(Guid goalHistoryId)
-        {
-
-            return View();
-        }
     }
 }

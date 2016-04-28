@@ -181,11 +181,8 @@
     <Content Include="Views\Goal\Include.cshtml" />
     <Content Include="Views\Goal\GoalsList.cshtml" />
     <Content Include="Views\GoalHistory\AddHistory.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\GoalHistory\GoalHistoryList.cshtml" />
-=======
     <Content Include="Views\GoalHistory\GoalsList.cshtml" />
->>>>>>> 48185b6ac4e1bcfbbf7b7ab03b1dd655bb2ef47b
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
