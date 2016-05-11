@@ -183,6 +183,7 @@
     <Content Include="Views\GoalHistory\AddHistory.cshtml" />
     <Content Include="Views\GoalHistory\GoalHistoryList.cshtml" />
     <Content Include="Views\GoalHistory\GoalsList.cshtml" />
+    <Content Include="Views\GoalHistory\EditHistory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

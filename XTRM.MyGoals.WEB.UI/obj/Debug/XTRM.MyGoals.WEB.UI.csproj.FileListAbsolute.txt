@@ -20,3 +20,4 @@ C:\Projetos\MyGoals\MyGoals\XTRM.MyGoals.WEB.UI\bin\System.Web.Helpers.xml
 C:\Projetos\MyGoals\MyGoals\XTRM.MyGoals.WEB.UI\bin\System.Web.Mvc.xml
 C:\Projetos\MyGoals\MyGoals\XTRM.MyGoals.WEB.UI\obj\Debug\XTRM.MyGoals.WEB.UI.dll
 C:\Projetos\MyGoals\MyGoals\XTRM.MyGoals.WEB.UI\obj\Debug\XTRM.MyGoals.WEB.UI.pdb
+C:\Projetos\MyGoals\MyGoals\XTRM.MyGoals.WEB.UI\obj\Debug\XTRM.MyGoals.WEB.UI.csprojResolveAssemblyReference.cache

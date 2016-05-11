@@ -59,8 +59,31 @@ namespace XTRM.MyGoals.WEB.UI.Controllers
 
         public ActionResult EditHistory(Guid goalHistoryId)
         {
+            var model = new Models.GoalHistory();
+            using (var contexto = new Models.MyGoalsEntities())
+            {
+                model = contexto.GoalHistory.Include("Goal").FirstOrDefault(gh => gh.id == goalHistoryId);
+            }
+            return View(model);
+        }
 
-            return View();
+        [HttpPost]
+        public ActionResult EditHistory(Models.GoalHistory _goalH)
+        {
+            var model = new Models.GoalHistory();
+            try
+            {
+                using (var contexto = new Models.MyGoalsEntities())
+                {
+                    model = contexto.GoalHistory.Include("Goal").FirstOrDefault(gh => gh.id == _goalH.id);
+                    model.description = _goalH.description;
+                    contexto.SaveChanges();
+                }
+            }catch(Exception erro)
+            {
+                ViewBag.Erro = erro.Message;
+            }
+            return View(model);
         }
 
         [HttpDelete]
